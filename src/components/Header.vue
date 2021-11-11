@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar sticky-top navbar-light bg-light navbar-expand-lg">
+  <nav class="navbar sticky-top navbar-light navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#"><img src="../assets/icon_logo.svg" alt=""></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -51,3 +51,7 @@
     </div>
   </nav>
 </template>
+
+<style>
+
+</style>
