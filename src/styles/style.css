@@ -1,0 +1,143 @@
+:root {
+  --shadow: 0px 3px 6px #00000029;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+ol,
+ul {
+  padding: 0;
+}
+
+footer {
+  background-color: #ffffff;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #959595;
+}
+
+.search-group {
+  background: url('../assets/景點banner.png') center;
+}
+
+.search-group .title {
+  font-size: 80px;
+  color: #ffffff;
+  text-shadow: var(--shadow);
+  margin-top: 128px;
+}
+
+.search-group .nav-link {
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #959595;
+  padding: 12px 24px;
+}
+
+.search-group .nav-link.active {
+  background-color: #b72323;
+  color: #ffffff;
+}
+
+.search-group .btn-search {
+  background-color: #b72323;
+  box-shadow: var(--shadow);
+}
+
+.search-group .form-select,
+.search-group .form-control {
+  color: #959595;
+  box-shadow: var(--shadow);
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: none;
+}
+
+.card:hover {
+  outline: 2px solid #b72323;
+}
+
+.card-img-top {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  min-height: 190px;
+  max-height: 190px;
+}
+
+.card-title {
+  font-size: 16px;
+}
+
+.card-text {
+  font-size: 14px;
+}
+
+.tag .badge {
+  background: #c8c8c8;
+  border-radius: 4px;
+  color: #707070;
+  font-size: 14px;
+  padding: 8px 8px;
+  margin-right: 8px;
+}
+
+.search-result-title h4 {
+  color: #2c2c2c;
+  font-size: 20px;
+  margin: 0;
+}
+
+.search-result-title p {
+  color: #959595;
+  font-size: 14px;
+  margin: 0;
+  margin-right: 8px;
+}
+
+.search-result-title select {
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 80px;
+  text-align: center;
+  height: 36px;
+}
+
+.search-result .page-link {
+  box-shadow: var(--shadow);
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.search-result .page-item.active .page-link {
+  background-color: #2a48ff33;
+  color: #2a48ff;
+  border: #2a48ff solid 1px;
+}
+
+.search-result .page-item:first-child .page-link,
+.search-result .page-item:last-child .page-link {
+  border-radius: 8px;
+}
+
+.search-result .page-num {
+  box-shadow: var(--shadow);
+  color: #2c2c2c;
+}
