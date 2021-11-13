@@ -67,10 +67,15 @@ footer p {
   border-radius: 8px;
   box-shadow: var(--shadow);
   border: none;
+  overflow: hidden;
 }
 
 .card:hover {
   outline: 2px solid #b72323;
+}
+
+.card:hover .card-img-top{
+  transform: scale(1.07);
 }
 
 .card-img-top {
@@ -78,6 +83,7 @@ footer p {
   border-top-right-radius: 8px;
   min-height: 190px;
   max-height: 190px;
+  transition: all .3s;
 }
 
 .card-title {
