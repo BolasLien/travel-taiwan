@@ -21,11 +21,9 @@
       <form class="row gx-3 gy-2 align-items-center pb-4">
         <div class="col-sm-6">
           <label class="visually-hidden" for="specificSizeSelect">選擇地區</label>
-          <select class="form-select" id="specificSizeSelect">
-            <option selected>選擇地區</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select v-model="city" class="form-select" id="specificSizeSelect">
+            <option selected hidden>選擇地區</option>
+            <option :value="city.en" v-for="(city, index) in cityList" :key="index">{{ city.zh }}</option>
           </select>
         </div>
         <div class="col-sm-4">
@@ -33,7 +31,7 @@
           <input type="text" class="form-control" id="specificSizeInputName" placeholder="請輸入景點名稱" />
         </div>
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary btn-search">搜尋</button>
+          <button type="submit" class="btn btn-search" @click.prevent="search">搜尋</button>
         </div>
       </form>
     </div>
@@ -51,7 +49,7 @@
       </div>
     </div>
     <ul class="row px-4">
-      <li class="col-sm-3 mb-4" v-for="(item, index) in showList" :key="index">
+      <li class="col-sm-3 mb-4" v-for="(item, index) in showData" :key="index">
         <div class="card m-auto" style="">
           <img :src="item.imgUrl" class="card-img-top" :alt="item.imgAlt" />
           <div class="card-body">
@@ -87,13 +85,38 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import {tdxGet} from '../services/tdxApi'
-import TdxTest from '../components/TdxTest.vue'
 import noImg from '../assets/Where-is-image.svg'
-let showList = ref([])
+
+let allData = ref([])
 let data = []
-let limitNum = 16
+let cityList = [
+  {zh: '臺北市', en: 'Taipei'},
+  {zh: '新北市', en: 'NewTaipei'},
+  {zh: '桃園市', en: 'Taoyuan'},
+  {zh: '臺中市', en: 'Taichung'},
+  {zh: '臺南市', en: 'Tainan'},
+  {zh: '高雄市', en: 'Kaohsiung'},
+  {zh: '基隆市', en: 'Keelung'},
+  {zh: '新竹市', en: 'Hsinchu'},
+  {zh: '新竹縣', en: 'HsinchuCounty'},
+  {zh: '苗栗縣', en: 'MiaoliCounty'},
+  {zh: '彰化縣', en: 'ChanghuaCounty'},
+  {zh: '南投縣', en: 'NantouCounty'},
+  {zh: '雲林縣', en: 'YunlinCounty'},
+  {zh: '嘉義縣', en: 'ChiayiCounty'},
+  {zh: '嘉義市', en: 'Chiayi'},
+  {zh: '屏東縣', en: 'PingtungCounty'},
+  {zh: '宜蘭縣', en: 'YilanCounty'},
+  {zh: '花蓮縣', en: 'HualienCounty'},
+  {zh: '臺東縣', en: 'TaitungCounty'},
+  {zh: '金門縣', en: 'KinmenCounty'},
+  {zh: '澎湖縣', en: 'PenghuCounty'},
+  {zh: '連江縣', en: 'LienchiangCounty'},
+]
+
+// let limitNum = 16
 // 臺北市:Taipei
 // 新北市:NewTaipei
 // 桃園市:Taoyuan
@@ -116,74 +139,50 @@ let limitNum = 16
 // 金門縣:KinmenCounty
 // 澎湖縣:PenghuCounty
 // 連江縣:LienchiangCounty
-let city = 'Taipei'
+let city = ref('')
 
-//取得指定[縣市]觀光景點資料
-let url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city}?$top=${limitNum}&$format=JSON`
-tdxGet(url)
-  .then(response => {
-    data = [...response.data]
-    showList.value = data.map(item => {
-      if (Object.keys(item.Picture).length === 0) {
-        item.Picture.PictureUrl1 = noImg
-        item.Picture.PictureDescription1 = '圖片不存在'
-      }
+const showData = computed(() => {
+  let showList = []
 
-      return {
-        title: item.Name,
-        city: item.City,
-        imgUrl: item.Picture.PictureUrl1,
-        imgAlt: item.Picture.PictureDescription1,
-        tags: [item.Class1, item.Class2, item.Class3],
-      }
+  if (allData.value.length) {
+    for (let i = 0; i < 16; i++) {
+      showList.push(allData.value[i])
+    }
+  }
+
+  return showList
+})
+
+const search = () => {
+  //取得指定[縣市]觀光景點資料
+  // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$format=JSON
+  let url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city.value}?$format=JSON`
+  tdxGet(url)
+    .then(response => {
+      data = [...response.data]
+      allData.value = data.map(item => {
+        if (Object.keys(item.Picture).length === 0) {
+          item.Picture.PictureUrl1 = noImg
+          item.Picture.PictureDescription1 = '圖片不存在'
+        }
+
+        return {
+          title: item.Name,
+          city: item.City,
+          imgUrl: item.Picture.PictureUrl1,
+          imgAlt: item.Picture.PictureDescription1,
+          tags: [item.Class1, item.Class2, item.Class3],
+        }
+      })
     })
-  })
-  .catch(error => {
-    console.log(error)
-  })
+    .catch(error => {
+      console.log(error)
+    })
+}
 
-// const showList = [
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/12/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/1002/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/512/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/254/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/215/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/64/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-//   {
-//     title: '大佳公園',
-//     location: '台北市',
-//     imgUrl: 'https://picsum.photos/id/72/300/200',
-//     tags: ['遊憩類', '都會公園類'],
-//   },
-// ]
+onMounted(() => {
+  city.value = 'Taipei'
+  search()
+})
+
 </script>

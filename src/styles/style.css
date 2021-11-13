@@ -64,12 +64,18 @@ footer p {
 }
 
 .search-group .btn-search {
+  border-radius: 8px;
+  padding: 16px 60px;
+  font-size: 20px;
   background-color: #b72323;
+  color: #ffffff;
   box-shadow: var(--shadow);
 }
 
 .search-group .form-select,
 .search-group .form-control {
+  border-radius: 8px;
+  padding: 20px 20px;
   color: #959595;
   box-shadow: var(--shadow);
 }
@@ -136,11 +142,18 @@ footer p {
   height: 36px;
 }
 
+.search-result .page-item{
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
 .search-result .page-link {
-  box-shadow: var(--shadow);
   background-color: #ffffff;
   border-radius: 8px;
   margin: 8px;
+  padding: 10px 16px;
+  border: none;
+  font-weight: bold;
 }
 
 .search-result .page-item.active .page-link {
@@ -154,7 +167,7 @@ footer p {
   border-radius: 8px;
 }
 
+
 .search-result .page-num {
-  box-shadow: var(--shadow);
   color: #2c2c2c;
 }
