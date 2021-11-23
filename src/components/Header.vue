@@ -1,11 +1,11 @@
 <template>
-  <nav class="navbar fixed-top navbar-light navbar-expand-lg" :class="cssSticky">
+  <header class="navbar fixed-top navbar-light navbar-expand-lg" :class="cssSticky">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img :src="imgLogo" alt="" />
       </a>
     </div>
-  </nav>
+  </header>
 </template>
 
 <script setup>

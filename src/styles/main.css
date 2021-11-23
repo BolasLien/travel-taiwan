@@ -1,0 +1,37 @@
+:root{
+  --bg-color: #F1F1F1;
+}
+
+.banner-view{
+  background: url('../assets/景點banner.png') center/cover;
+}
+
+.search .container{
+  padding-top: 70px;
+}
+
+.search-result{
+  background: var(--bg-color);
+}
+
+/* card */
+.card-img-top{
+  height: 128px;
+}
+
+
+.object-fit-cover{
+  object-fit: cover;
+}
+
+/* rwd */
+@media (min-width: 992px){
+  .card-img-top{
+    height: 190px;
+  }
+
+  .search .container{
+    padding-top: 160px;
+  }
+
+}
