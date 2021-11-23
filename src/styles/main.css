@@ -2,6 +2,12 @@
   --bg-color: #F1F1F1;
 }
 
+.object-fit-cover{
+  object-fit: cover;
+}
+
+/* 搜尋頁 */
+
 .banner-view{
   background: url('../assets/景點banner.png') center/cover;
 }
@@ -19,10 +25,16 @@
   height: 128px;
 }
 
+/* 觀光介紹 */
 
-.object-fit-cover{
-  object-fit: cover;
+.background-view{
+  background: url('../assets/景點backgrund.png') center/cover;
 }
+
+.intro-top .container{
+  padding-top: 164px;
+}
+
 
 /* rwd */
 @media (min-width: 992px){

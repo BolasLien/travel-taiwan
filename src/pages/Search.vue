@@ -1,8 +1,8 @@
 <template>
+<Header />
   <div class="search banner-view">
-
     <div class="container">
-    <router-link to="/about">About</router-link>
+    <router-link to="/Scenic/1">About</router-link>
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <h1 class="display-1 d-none d-lg-block">景點</h1>
@@ -138,9 +138,12 @@
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script setup>
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
 import {ref, computed, onMounted} from 'vue'
 import {tdxGet} from '../services/tdxApi'
 import noImg from '../assets/Where-is-image.svg'
