@@ -1,6 +1,6 @@
 <template>
 <Header />
-  <div class="search banner-view">
+  <div class="search view-banner">
     <div class="container">
     <router-link to="/Scenic/1">About</router-link>
       <div class="row justify-content-center">
@@ -50,7 +50,7 @@
       </div>
     </div>
   </div>
-  <div class="search-result">
+  <div class="search-result bg-main">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -81,7 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-lg-4 g-4">
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
         <div class="col" v-for="(item, index) in showData" :key="index">
           <div class="card">
             <div class="row g-0 flex-lg-column">
@@ -100,16 +100,6 @@
                 </div>
               </div>
             </div>
-            <!-- <img :src="item.imgUrl" class="card-img-top object-fit-cover" :alt="item.imgAlt" />
-            <div class="card-body">
-              <h6 class="card-title">{{ item.title }}</h6>
-              <a class="card-text" href="#">{{ item.city }}</a>
-              <div class="row g-1">
-                <div class="col-auto" v-for="(tag, index) in item.tags" :key="index">
-                  <span class="badge bg-secondary">{{ tag }}</span>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>

@@ -6,18 +6,18 @@
   object-fit: cover;
 }
 
+.bg-main{
+  background: var(--bg-color);
+}
+
 /* 搜尋頁 */
 
-.banner-view{
+.view-banner{
   background: url('../assets/景點banner.png') center/cover;
 }
 
 .search .container{
   padding-top: 70px;
-}
-
-.search-result{
-  background: var(--bg-color);
 }
 
 /* card */
@@ -27,7 +27,7 @@
 
 /* 觀光介紹 */
 
-.background-view{
+.view-background{
   background: url('../assets/景點backgrund.png') center/cover;
 }
 
