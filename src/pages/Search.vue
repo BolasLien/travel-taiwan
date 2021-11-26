@@ -5,14 +5,18 @@
     <router-link to="/Scenic/1">About</router-link>
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h1 class="display-1 d-none d-lg-block main-page-title">景點</h1>
+          <h1 class="display-1 d-none d-lg-block main-page-title">{{route.params.type}}</h1>
           <div class="row mb-3">
             <div class="col-lg-6">
               <nav class="nav nav-pills">
-                <a class="flex-fill text-sm-center nav-link mx-2 active" href="#">景點</a>
+                <router-link class="flex-fill text-sm-center nav-link mx-2 active" to="/Scenic">景點</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" to="/Restaurant">餐飲</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" to="/Hotel">旅宿</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" to="/Activity">活動</router-link>
+<!--                 <a class="flex-fill text-sm-center nav-link mx-2 active" href="#">景點</a>
                 <a class="flex-fill text-sm-center nav-link mx-2" href="#">餐飲</a>
                 <a class="flex-fill text-sm-center nav-link mx-2" href="#">旅宿</a>
-                <a class="flex-fill text-sm-center nav-link mx-2" href="#">活動</a>
+                <a class="flex-fill text-sm-center nav-link mx-2" href="#">活動</a> -->
               </nav>
             </div>
           </div>
@@ -132,6 +136,8 @@
 </template>
 
 <script setup>
+import { useRouter, useRoute } from 'vue-router'
+
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import {ref, computed, onMounted} from 'vue'
@@ -141,6 +147,8 @@ import {cityList} from '../services/cityList'
 let allData = ref([])
 let data = []
 
+let route = useRoute()
+let router = useRouter()
 
 // let limitNum = 16
 

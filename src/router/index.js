@@ -5,6 +5,7 @@ import About from '../pages/About.vue'
 
 const routes = [
   {path: '/', name:'Search', component: Search},
+  {path: '/:type', name:'Search', component: Search},
   {path: '/:type/:query', name:'About', component: About},
 ]
 
