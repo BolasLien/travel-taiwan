@@ -1,16 +1,16 @@
 <template>
   <Header />
-  <div class="intro-top view-background">
+  <div class="intro-top scenic-background">
     <div class="container d-none d-md-block">
       <router-link to="/">Home</router-link>
       <div class="row">
         <div class="col">
-          <h1 class="display-1 d-none d-md-block">景點</h1>
+          <h1 class="display-1 d-none d-md-block main-page-title">景點</h1>
         </div>
       </div>
     </div>
   </div>
-  <div class="bg-main">
+  <div class="bg-main py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -68,17 +68,32 @@
             </button>
           </div>
         </div>
-        <div class="col-lg-6 bg-light">
-          <div class="row flex-column">
+        <div class="col-lg-6 bg-white">
+          <div class="row flex-column py-4 px-3">
             <div class="col">
               <h4>大稻埕碼頭_大稻埕碼頭貨櫃市集</h4>
             </div>
             <div class="col">
-              <h5>臺北市</h5>
+              <a href="#">臺北市</a>
             </div>
             <div class="col">
               <h5>標籤</h5>
-              <p><span class="badge bg-secondary">遊憩類</span><span class="badge bg-secondary">非古蹟</span></p>
+              <div class="row g-1">
+                <div class="col-auto"><span class="badge bg-secondary">遊憩類</span></div>
+                <div class="col-auto"><span class="badge bg-secondary">非古蹟</span></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <h5>活動時間</h5>
+                  <p>2021-12-17 ~ 2021-12-18</p>
+                </div>
+                <div class="col">
+                  <h5>主辦單位</h5>
+                  <p>臺北市政府觀光傳播局</p>
+                </div>
+              </div>
             </div>
             <div class="col">
               <h5>開放時間</h5>
@@ -103,14 +118,29 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
+
+      <div class="row flex-column gy-3 mt-3">
+        <div class="col bg-white">
+          <h3>房型、價目及數量說明</h3>
+          <p>雙人房10000 單人房10000 單人房(無障礙客房) 7500 雙人房10000</p>
+        </div>
+        <div class="col bg-white">
+          <h3>服務內容介紹</h3>
+          <p>餐廳,會議場所,無線網路,國民旅遊卡,停車場,無障礙 客房,自助洗衣 (收費),上網電腦 (免費),,,,洗衣服務,郵電服務,貴重物品保管專櫃,接送服務,AED,外幣兌換,自行車友善旅宿,,</p>
+        </div>
+        <div class="col bg-white">
+          <h3>停車資訊</h3>
+          <p>車位:小客車35輛、機車0輛、大客車0輛</p>
+        </div>
+      </div>
+
+
+      <div class="row mt-4 mb-3">
         <div class="col">
           <h5 class="mb-0">你可能會喜歡</h5>
         </div>
       </div>
-      <div class="row g-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
+      <div class="row g-3 row-cols-2 row-cols-lg-4">
         <div class="col" v-for="(item, index) in showData" :key="index">
           <div class="card">
             <div class="row g-0">
@@ -136,7 +166,6 @@
   </div>
   <Footer />
 </template>
-
 
 <script setup>
 import Header from '../components/Header.vue'
@@ -197,9 +226,9 @@ let cityList = [
 // 連江縣:LienchiangCounty
 let city = ref('')
 
-const clickCity = (cityObj)=>{
+const clickCity = cityObj => {
   city.value = cityObj
-  console.log(city.value);
+  console.log(city.value)
 }
 
 const showData = computed(() => {

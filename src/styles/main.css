@@ -1,3 +1,80 @@
+:root {
+
+/* Colors: */
+--main-color-959595: #959595;
+--main-color-2c2c2c: #2C2C2C;
+--main-color-2a48ff: #2A48FF;
+--main-color-b72323: #B72323;
+--main-color-ffffff: #FFFFFF;
+
+/* Font/text values */
+--main-font-family-roboto: Roboto;
+--main-font-style-normal: normal;
+--main-font-weight-normal: normal;
+--main-font-size-14: 14px;
+--main-font-size-16: 16px;
+--main-font-size-20: 20px;
+--main-font-size-80: 80px;
+--main-character-spacing-0: 0px;
+--main-character-spacing-0-22: 0.22px;
+--main-character-spacing-0-26: 0.26px;
+--main-line-spacing-19: 19px;
+--main-line-spacing-21: 21px;
+--main-line-spacing-26: 26px;
+
+/* shadow */
+--main-shadow: 0px 3px 6px #00000029;
+}
+
+.main-page-title {
+  font-family: var(--main-font-family-roboto);
+  font-style: var(--main-font-style-normal);
+  font-weight: var(--main-font-weight-normal);
+  font-size: var(--main-font-size-80);
+  line-height: var(--main-line-spacing-0);
+  letter-spacing: var(--main-character-spacing-0);
+  color: var(--main-color-ffffff);
+  text-shadow: var(--main-shadow);
+}
+
+/* Character Styles */
+.main-character-style-1 {
+font-family: var(--main-font-family-roboto);
+font-style: var(--main-font-style-normal);
+font-weight: var(--main-font-weight-normal);
+font-size: var(--main-font-size-20);
+line-height: var(--main-line-spacing-26);
+letter-spacing: var(--main-character-spacing-0);
+color: var(--main-color-ffffff);
+}
+.main-character-style-2 {
+font-family: var(--main-font-family-roboto);
+font-style: var(--main-font-style-normal);
+font-weight: var(--main-font-weight-normal);
+font-size: var(--main-font-size-14);
+line-height: var(--main-line-spacing-19);
+letter-spacing: var(--main-character-spacing-0-22);
+color: var(--main-color-959595);
+}
+.main-character-style-3 {
+font-family: var(--main-font-family-roboto);
+font-style: var(--main-font-style-normal);
+font-weight: var(--main-font-weight-normal);
+font-size: var(--main-font-size-16);
+line-height: var(--main-line-spacing-21);
+letter-spacing: var(--main-character-spacing-0-26);
+color: var(--main-color-959595);
+}
+.main-character-style-4 {
+font-family: var(--main-font-family-roboto);
+font-style: var(--main-font-style-normal);
+font-weight: var(--main-font-weight-normal);
+font-size: var(--main-font-size-16);
+line-height: var(--main-line-spacing-21);
+letter-spacing: var(--main-character-spacing-0-26);
+color: var(--main-color-ffffff);
+}
+
 :root{
   --bg-color: #F1F1F1;
 }
@@ -10,10 +87,45 @@
   background: var(--bg-color);
 }
 
+.bg-white{
+  background: var(--main-color-ffffff);
+}
+
+.nav-pills .nav-link {
+  background: var(--main-color-ffffff);
+  border-radius: 24px;
+}
+
+.nav-pills .nav-link:hover {
+  background: var(--main-color-ffffff);
+  border-radius: 24px;
+  box-shadow: var(--main-shadow);
+}
+
+.nav-pills .nav-link.active {
+  background: var(--main-color-b72323);
+  border-radius: 24px;
+  box-shadow: var(--main-shadow);
+}
+
+
+
 /* 搜尋頁 */
 
-.view-banner{
+.scenic-banner{
   background: url('../assets/景點banner.png') center/cover;
+}
+
+.Restaurant-banner{
+  background: url('../assets/餐飲banner.png') center/cover;
+}
+
+.Hotel-banner{
+  background: url('../assets/旅宿banner.png') center/cover;
+}
+
+.Activity-banner{
+  background: url('../assets/活動banner.png') center/cover;
 }
 
 .search .container{
@@ -27,8 +139,20 @@
 
 /* 觀光介紹 */
 
-.view-background{
+.scenic-background{
   background: url('../assets/景點backgrund.png') center/cover;
+}
+
+.Restaurant-background{
+  background: url('../assets/餐飲background.png') center/cover;
+}
+
+.Hotel-background{
+  background: url('../assets/旅宿background.png') center/cover;
+}
+
+.Activity-background{
+  background: url('../assets/活動background.png') center/cover;
 }
 
 .intro-top .container{

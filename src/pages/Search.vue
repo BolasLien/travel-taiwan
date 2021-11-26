@@ -1,22 +1,22 @@
 <template>
 <Header />
-  <div class="search view-banner">
+  <div class="search scenic-banner">
     <div class="container">
     <router-link to="/Scenic/1">About</router-link>
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h1 class="display-1 d-none d-lg-block">景點</h1>
-          <div class="row">
+          <h1 class="display-1 d-none d-lg-block main-page-title">景點</h1>
+          <div class="row mb-3">
             <div class="col-lg-6">
               <nav class="nav nav-pills">
-                <a class="flex-fill text-sm-center nav-link active" href="#">景點</a>
-                <a class="flex-fill text-sm-center nav-link" href="#">餐飲</a>
-                <a class="flex-fill text-sm-center nav-link" href="#">旅宿</a>
-                <a class="flex-fill text-sm-center nav-link" href="#">活動</a>
+                <a class="flex-fill text-sm-center nav-link mx-2 active" href="#">景點</a>
+                <a class="flex-fill text-sm-center nav-link mx-2" href="#">餐飲</a>
+                <a class="flex-fill text-sm-center nav-link mx-2" href="#">旅宿</a>
+                <a class="flex-fill text-sm-center nav-link mx-2" href="#">活動</a>
               </nav>
             </div>
           </div>
-          <div class="row sticky-top">
+          <div class="row mb-4">
             <div class="col-md-6">
               <div class="dropdown">
                 <button
@@ -50,11 +50,11 @@
       </div>
     </div>
   </div>
-  <div class="search-result bg-main">
+  <div class="search-result bg-main py-5">
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="row align-items-center">
+          <div class="row mb-3 align-items-center">
             <div class="col-4">
               <h5 class="search-result-title mb-0">搜尋結果</h5>
             </div>
@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-5">
         <div class="col">
           <nav>
             <ul class="pagination justify-content-center pagination-lg">
@@ -137,57 +137,13 @@ import Footer from '../components/Footer.vue'
 import {ref, computed, onMounted} from 'vue'
 import {tdxGet} from '../services/tdxApi'
 import noImg from '../assets/Where-is-image.svg'
-
+import {cityList} from '../services/cityList'
 let allData = ref([])
 let data = []
-let cityList = [
-  {zh: '臺北市', en: 'Taipei'},
-  {zh: '新北市', en: 'NewTaipei'},
-  {zh: '桃園市', en: 'Taoyuan'},
-  {zh: '臺中市', en: 'Taichung'},
-  {zh: '臺南市', en: 'Tainan'},
-  {zh: '高雄市', en: 'Kaohsiung'},
-  {zh: '基隆市', en: 'Keelung'},
-  {zh: '新竹市', en: 'Hsinchu'},
-  {zh: '新竹縣', en: 'HsinchuCounty'},
-  {zh: '苗栗縣', en: 'MiaoliCounty'},
-  {zh: '彰化縣', en: 'ChanghuaCounty'},
-  {zh: '南投縣', en: 'NantouCounty'},
-  {zh: '雲林縣', en: 'YunlinCounty'},
-  {zh: '嘉義縣', en: 'ChiayiCounty'},
-  {zh: '嘉義市', en: 'Chiayi'},
-  {zh: '屏東縣', en: 'PingtungCounty'},
-  {zh: '宜蘭縣', en: 'YilanCounty'},
-  {zh: '花蓮縣', en: 'HualienCounty'},
-  {zh: '臺東縣', en: 'TaitungCounty'},
-  {zh: '金門縣', en: 'KinmenCounty'},
-  {zh: '澎湖縣', en: 'PenghuCounty'},
-  {zh: '連江縣', en: 'LienchiangCounty'},
-]
+
 
 // let limitNum = 16
-// 臺北市:Taipei
-// 新北市:NewTaipei
-// 桃園市:Taoyuan
-// 臺中市:Taichung
-// 臺南市:Tainan
-// 高雄市:Kaohsiung
-// 基隆市:Keelung
-// 新竹市:Hsinchu
-// 新竹縣:HsinchuCounty
-// 苗栗縣:MiaoliCounty
-// 彰化縣:ChanghuaCounty
-// 南投縣:NantouCounty
-// 雲林縣:YunlinCounty
-// 嘉義縣:ChiayiCounty
-// 嘉義市:Chiayi
-// 屏東縣:PingtungCounty
-// 宜蘭縣:YilanCounty
-// 花蓮縣:HualienCounty
-// 臺東縣:TaitungCounty
-// 金門縣:KinmenCounty
-// 澎湖縣:PenghuCounty
-// 連江縣:LienchiangCounty
+
 let city = ref('')
 
 const clickCity = (cityObj)=>{
@@ -238,7 +194,7 @@ const search = () => {
 }
 
 onMounted(() => {
-  city.value = {zh: '臺北市', en: 'Taipei'}
+  city.value = cityList[0]
   search()
 })
 </script>
