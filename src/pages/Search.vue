@@ -1,18 +1,18 @@
 <template>
 <Header />
-  <div class="search scenic-banner">
+  <div class="search" :class="bannerClass">
     <div class="container">
-    <router-link to="/Scenic/1">About</router-link>
+    <router-link :to="`/${route.name}/1`">About</router-link>
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h1 class="display-1 d-none d-lg-block main-page-title">{{route.params.type}}</h1>
+          <h1 class="display-1 d-none d-lg-block main-page-title">{{route.name}}</h1>
           <div class="row mb-3">
             <div class="col-lg-6">
               <nav class="nav nav-pills">
-                <router-link class="flex-fill text-sm-center nav-link mx-2 active" to="/Scenic">景點</router-link>
-                <router-link class="flex-fill text-sm-center nav-link mx-2" to="/Restaurant">餐飲</router-link>
-                <router-link class="flex-fill text-sm-center nav-link mx-2" to="/Hotel">旅宿</router-link>
-                <router-link class="flex-fill text-sm-center nav-link mx-2" to="/Activity">活動</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'ScenicSpot'}" to="/ScenicSpot">景點</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'Restaurant'}" to="/Restaurant">餐飲</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'Hotel'}" to="/Hotel">旅宿</router-link>
+                <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'Activity'}" to="/Activity">活動</router-link>
 <!--                 <a class="flex-fill text-sm-center nav-link mx-2 active" href="#">景點</a>
                 <a class="flex-fill text-sm-center nav-link mx-2" href="#">餐飲</a>
                 <a class="flex-fill text-sm-center nav-link mx-2" href="#">旅宿</a>
@@ -150,6 +150,27 @@ let data = []
 let route = useRoute()
 let router = useRouter()
 
+const bannerClass = computed(()=>{
+  let className = 'scenic-banner'
+  switch(route.name){
+    default:
+    case 'ScenicSpot':
+      className = 'scenic-banner'
+      break;
+    case 'Restaurant':
+      className = 'restaurant-banner'
+      break;
+    case 'Hotel':
+      className = 'hotel-banner'
+      break;
+    case 'Activity':
+      className = 'activity-banner'
+      break;
+  }
+
+  return className
+})
+
 // let limitNum = 16
 
 let city = ref('')
@@ -174,7 +195,7 @@ const showData = computed(() => {
 const search = () => {
   //取得指定[縣市]觀光景點資料
   // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/Taipei?$format=JSON
-  let url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${city.value.en}?$format=JSON`
+  let url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/${route.name}/${city.value.en}?$format=JSON`
   tdxGet(url)
     .then(response => {
       data = [...response.data]
@@ -204,5 +225,10 @@ const search = () => {
 onMounted(() => {
   city.value = cityList[0]
   search()
+
 })
+router.afterEach((to, from) => {
+  search()
+})
+
 </script>

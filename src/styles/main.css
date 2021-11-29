@@ -116,15 +116,15 @@ color: var(--main-color-ffffff);
   background: url('../assets/景點banner.png') center/cover;
 }
 
-.Restaurant-banner{
+.restaurant-banner{
   background: url('../assets/餐飲banner.png') center/cover;
 }
 
-.Hotel-banner{
+.hotel-banner{
   background: url('../assets/旅宿banner.png') center/cover;
 }
 
-.Activity-banner{
+.activity-banner{
   background: url('../assets/活動banner.png') center/cover;
 }
 
@@ -143,15 +143,15 @@ color: var(--main-color-ffffff);
   background: url('../assets/景點backgrund.png') center/cover;
 }
 
-.Restaurant-background{
+.restaurant-background{
   background: url('../assets/餐飲background.png') center/cover;
 }
 
-.Hotel-background{
+.hotel-background{
   background: url('../assets/旅宿background.png') center/cover;
 }
 
-.Activity-background{
+.activity-background{
   background: url('../assets/活動background.png') center/cover;
 }
 

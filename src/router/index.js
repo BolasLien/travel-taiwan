@@ -4,9 +4,15 @@ import Search from '../pages/Search.vue'
 import About from '../pages/About.vue'
 
 const routes = [
-  {path: '/', name:'Search', component: Search},
-  {path: '/:type', name:'Search', component: Search},
-  {path: '/:type/:query', name:'About', component: About},
+  {path: '/', redirect: '/ScenicSpot'},
+  {path: '/ScenicSpot', name:'ScenicSpot', component: Search},
+  {path: '/ScenicSpot/:query', component: About},
+  {path: '/Restaurant', name:'Restaurant', component: Search},
+  {path: '/Restaurant/:query', component: About},
+  {path: '/Hotel', name:'Hotel', component: Search},
+  {path: '/Hotel/:query', component: About},
+  {path: '/Activity', name:'Activity', component: Search},
+  {path: '/Activity/:query', component: About},
 ]
 
 const router = createRouter( {
