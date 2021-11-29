@@ -87,7 +87,7 @@
       </div>
       <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
         <div class="col" v-for="(item, index) in showData" :key="index">
-          <div class="card">
+          <router-link class="card" :to="`/${route.name}/${item.title}`">
             <div class="row g-0 flex-lg-column">
               <div class="col-5 col-lg-12">
                 <img :src="item.imgUrl" class="card-img-top object-fit-cover" :alt="item.imgAlt" />
@@ -104,7 +104,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
       <div class="row mt-5">
@@ -209,6 +209,7 @@ const search = () => {
         tags = tags.filter(item => item !== undefined)
 
         return {
+          id: item.ID,
           title: item.Name,
           city: item.City,
           imgUrl: item.Picture.PictureUrl1,

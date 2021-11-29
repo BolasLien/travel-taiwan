@@ -168,11 +168,15 @@
 </template>
 
 <script setup>
+import { useRouter, useRoute } from 'vue-router'
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import {ref, computed, onMounted} from 'vue'
 import {tdxGet} from '../services/tdxApi'
 import noImg from '../assets/Where-is-image.svg'
+
+let route = useRoute()
+let router = useRouter()
 
 let allData = ref([])
 let data = []
@@ -277,4 +281,6 @@ onMounted(() => {
   city.value = {zh: '臺北市', en: 'Taipei'}
   search()
 })
+
+
 </script>
