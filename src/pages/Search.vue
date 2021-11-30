@@ -13,10 +13,6 @@
                 <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'Restaurant'}" to="/Restaurant">餐飲</router-link>
                 <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'Hotel'}" to="/Hotel">旅宿</router-link>
                 <router-link class="flex-fill text-sm-center nav-link mx-2" :class="{active: route.name === 'Activity'}" to="/Activity">活動</router-link>
-<!--                 <a class="flex-fill text-sm-center nav-link mx-2 active" href="#">景點</a>
-                <a class="flex-fill text-sm-center nav-link mx-2" href="#">餐飲</a>
-                <a class="flex-fill text-sm-center nav-link mx-2" href="#">旅宿</a>
-                <a class="flex-fill text-sm-center nav-link mx-2" href="#">活動</a> -->
               </nav>
             </div>
           </div>
@@ -87,7 +83,7 @@
       </div>
       <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
         <div class="col" v-for="(item, index) in showData" :key="index">
-          <router-link class="card" :to="`/${route.name}/${item.title}`">
+          <div class="card" @click.prevent="select(item)">
             <div class="row g-0 flex-lg-column">
               <div class="col-5 col-lg-12">
                 <img :src="item.imgUrl" class="card-img-top object-fit-cover" :alt="item.imgAlt" />
@@ -104,7 +100,7 @@
                 </div>
               </div>
             </div>
-          </router-link>
+          </div>
         </div>
       </div>
       <div class="row mt-5">
@@ -136,14 +132,22 @@
 </template>
 
 <script setup>
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute  } from 'vue-router'
 
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
-import {ref, computed, onMounted} from 'vue'
+import {ref, computed, onMounted, defineProps } from 'vue'
 import {tdxGet} from '../services/tdxApi'
 import noImg from '../assets/Where-is-image.svg'
 import {cityList} from '../services/cityList'
+
+// 拿props
+const props = defineProps({
+  selectData: Object
+})
+
+console.log(props.selectData);
+
 let allData = ref([])
 let data = []
 
@@ -228,8 +232,14 @@ onMounted(() => {
   search()
 
 })
-router.afterEach((to, from) => {
-  search()
-})
+
+const select = (item)=>{
+  props.selectData.value = item
+  let to =`/${route.name}/${item.title}`
+
+  router.push(to)
+}
+
+
 
 </script>

@@ -6,13 +6,13 @@ import About from '../pages/About.vue'
 const routes = [
   {path: '/', redirect: '/ScenicSpot'},
   {path: '/ScenicSpot', name:'ScenicSpot', component: Search},
-  {path: '/ScenicSpot/:query', component: About},
+  {path: '/ScenicSpot/:title', component: About},
   {path: '/Restaurant', name:'Restaurant', component: Search},
-  {path: '/Restaurant/:query', component: About},
+  {path: '/Restaurant/:title', component: About},
   {path: '/Hotel', name:'Hotel', component: Search},
-  {path: '/Hotel/:query', component: About},
+  {path: '/Hotel/:title', component: About},
   {path: '/Activity', name:'Activity', component: Search},
-  {path: '/Activity/:query', component: About},
+  {path: '/Activity/:title', component: About},
 ]
 
 const router = createRouter( {

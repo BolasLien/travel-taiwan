@@ -171,12 +171,16 @@
 import { useRouter, useRoute } from 'vue-router'
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
-import {ref, computed, onMounted} from 'vue'
+import {ref, computed, onMounted, defineProps} from 'vue'
 import {tdxGet} from '../services/tdxApi'
 import noImg from '../assets/Where-is-image.svg'
 
-let route = useRoute()
-let router = useRouter()
+const props = defineProps({
+  selectData: Object
+})
+
+console.log(props.selectData.value);
+
 
 let allData = ref([])
 let data = []
